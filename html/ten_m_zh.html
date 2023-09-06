@@ -1,0 +1,372 @@
+<!doctype html>
+<html class="h-100" lang="zh">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="description" content="We analyze big data from the crypto market trends in real-time, identifying whale pumps. Free alert.">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"> -->
+  <link rel="icon" type="image/ico" sizes="32x32" href="img/logo.ico">
+  <link rel="icon" type="image/ico" sizes="16x16" href="img/logo.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+  <meta name="author" content="Mars Killer">
+  <meta name="generator" content="Eleventy v2.0.0">
+  <meta name="HandheldFriendly" content="true">
+  <title>CoinWin - 自动, 盈利, 重复</title>
+  <link rel="stylesheet" href="css/theme.min.css">
+  <style>
+
+      /* inter-300 - latin */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+
+      /* inter-400 - latin */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      .link-fancy {
+          text-decoration: none; /* removes underline */
+      }
+
+      .icon-twitter {
+          width: 32px; /* width of the SVG */
+          height: 32px; /* height of the SVG */
+      }
+      .icon-telegram {
+          width: 38px; /* width of the SVG */
+          height: 38px; /* height of the SVG */
+      }
+      .swal2-close {
+        font-size: 30px !important;
+      }
+      #buttonsContainer{
+          margin-top: 30px;
+      }
+      .text-btn {
+            background-color: Transparent;
+            border: none;
+            color: #f7f3f3;
+            text-align: right;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 19px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .label {
+            font-weight: bold;
+            margin-right: 10px;
+            margin-left: 26px;
+        }
+        .signalDataTitlelabel {
+          font-size: 19px;
+          white-space: nowrap;
+          margin-right: 10px;
+        }
+        .row {
+            margin-bottom: 10px;
+        }
+
+        .dropdownrow select {
+            font-size: 16px;      /* 设置下拉菜单字体大小 */
+            width: 40%;          /* 调整下拉菜单宽度 */
+            padding: 5px 10px;   /* 为下拉菜单添加些许内边距 */
+            background-color: #f7f3f3; /* 设置下拉菜单背景色 */
+            color: #333;         /* 设置下拉菜单文字颜色 */
+            border: 1px solid #ccc; /* 设置下拉菜单边框 */
+            border-radius: 5px;  /* 设置下拉菜单边框圆角 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */     
+            margin-bottom: 13px; 
+            margin-left: 8px;      
+
+        }
+        
+        .selected {
+            color: rgb(255, 208, 0); /* Change as needed */
+        }
+
+        #signalInfo {
+            font-size: 17px; 
+            color: rgb(148, 145, 145); 
+            /* background-color: black; */
+            display: flex; /* 使用flex布局来分布标题 */
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 90%; /* 设置宽度为屏幕宽度的90% */
+            padding: 10px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+            height: auto;
+        }
+
+        #signalDataTitle {
+            display: flex; 
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 90%; /* 设置宽度为屏幕宽度的90% */
+            background-color: rgb(48, 48, 46); /* 设置背景颜色 */
+            padding: 8px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+        }
+
+        /* 以下样式是用于翻页或滑动加载下一页的数据 */
+        #signalData {
+            display: flex; 
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 90%; /* 设置宽度为屏幕宽度的90% */
+            padding: 10px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+            height: auto; /* 你可以根据需要调整高度 */
+            /* overflow-y: scroll; */
+            font-size: 18px;
+        }
+
+        .dataRow {
+            display: flex; 
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 100%; /* 设置宽度为屏幕宽度的90% */
+            padding: 10px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+            /* overflow-y: scroll;  */
+            font-size: 18px;
+            height: 59px;
+        }
+</style>
+
+</head>
+
+<body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+
+<div id="buttonsContainer">
+    <div class="dropdownrow">
+        <span class="label">交易所:</span>
+        <select id="exchangeDropdown">
+            <option value="binance" selected>币安</option>
+            <!-- 更多交易所选项可以在此添加 -->
+        </select>
+        <span style="font-size: 9px; color: lightslategray;">更多交易所即将上线... </span>
+    </div>
+
+    <div class="dropdownrow">
+        <span class="label">指标名称:</span>
+        <select id="signalDropdown">
+            <!-- 将按钮转换为下拉菜单的选项 -->
+            <option value="MACD">MACD</option>
+            <option value="MA">MA</option>
+            <option value="KDJ">KDJ</option>
+            <option value="EMA">EMA</option>
+            <option value="CCI">CCI</option>
+            <option value="OBV">OBV</option>
+            <option value="RSI">RSI</option>
+            <option value="TD">TD</option>
+            <option value="均线过滤">均线过滤</option>
+            <option value="新高">新高</option>
+
+            <!-- 更多指标名称可以在此添加 -->
+        </select>
+    </div>
+    <div class="dropdownrow">
+        <span class="label">周期:</span>
+        <select id="periodDropdown">
+            <option value="4h">4h</option>
+            <option value="1d">1d</option>
+            <!-- 更多周期可以在此添加 -->
+        </select>
+    </div>
+
+    <div class="dropdownrow" id="triggerDropdownRow">
+        <span class="label">触发条件:</span>
+        <select id="triggerDropdown">
+            <!-- 触发条件的选项将由JavaScript动态生成 -->
+        </select>
+    </div>
+
+    <div class="row" id="signalInfo">
+    </div>
+
+    <div id="signalDataTitle">
+        <span class="signalDataTitlelabel">交易对</span>
+        <span class="signalDataTitlelabel">当前价格</span>
+        <span class="signalDataTitlelabel">涨跌幅</span>
+    </div>
+    
+    <div class="row" id="signalData">
+       
+    </div> 
+    
+</div>
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      $(document).ready(function() {
+        //返回按钮
+        const tg = window.Telegram.WebApp;        
+          tg.MainButton.text = "返回";
+          tg.MainButton.show();
+          tg.BackButton.show();    
+          tg.onEvent("mainButtonClicked", function(){
+              window.location.href = 'https://coinwin.vip/zh/home_zh.html';
+              tg.MainButton.hide();
+              tg.BackButton.hide();
+          });
+          tg.onEvent("backButtonClicked", function(){
+              tg.BackButton.hide();
+              window.location.href = 'https://coinwin.vip/zh/home_zh.html';
+          });
+
+          var signalTriggerMap = {
+              'MACD': ['快慢线金叉', '快慢线死叉', '快线由下而上破0轴买点', '快线由上而下破0轴卖点'],
+              'KDJ': ['超买', '超卖', 'K线与D线金叉', 'K线与D线死叉'],
+              'RSI': ['超买', '超卖', 'RSI中线金叉', 'RSI中线死叉'],
+              'TD': ['买入设定', '卖出设定'],
+              'MA': ['5_10金叉', '5_10死叉','10_30金叉', '10_30死叉','5_10_30多头排列', '5_10_30空头排列'],
+              'EMA': ['5_10金叉', '5_10死叉','10_30金叉', '10_30死叉','5_10_30多头排列', '5_10_30空头排列'],
+              'OBV': ['量价5连升', '量价5连降','量价4连升', '量价4连降'],
+              'CCI': ['超买', '超卖','从负值上穿过零轴', '从正值下穿过零轴'],
+              '均线过滤': ['5日均线之上', '30日均线之上','200日均线之上'],
+              '新高': ['5日新高', '30日新高','200日新高','历史新高']
+          };
+          var signalInfo = {
+              'MACD': "MACD指标是由两线一柱组合起来形成，快速线为DIF，慢速线为DEA。MACD金叉，DIF由下向上突破 DEA，为买入信号；MACD死叉，DIF由上向下突破 DEA，为卖出信号。快线DIF由下穿破0轴，为买入信号；快线DIF由上而下穿破0轴，为卖出信号。",
+              'KDJ': "KDJ又叫随机指标，由3根曲线组成，移动速度最快的是J线，其次是K线，最慢的是D线。当 K线和D线均位于 80 以上时，市场被认为是超买状态，可能会出现回落。当 K线和D线均位于 20 以下时，市场被认为是超卖状态，可能会出现上涨。当K线从下方突破D线（金叉），这通常被视为买入信号。当K线从上方跌破D线（死叉），这通常被视为卖出信号。",
+              'RSI': " 相对强弱指数（Relative Strength Index，简称 RSI）是一种常用的动量指标，用于衡量资产价格变化的速度和幅度。RSI 的取值范围在 0 到 100 之间。RSI 值高于 70 时，被认为是超买状态，可能会出现回落。当 RSI 值低于 30 时，被认为是超卖状态，可能会出现上涨。RSI 的中线为 50。当 RSI 从下方突破 50，表明市场上涨的力量较强，可能继续上涨。当 RSI 从上方跌破 50，表明市场下跌的力量较强，可能继续下跌。",
+              'TD': "汤姆·德马克（Tom DeMark）指数旨在确定资产价格趋势疲劳和可能的反转点。在一个上涨趋势中，当今天的收盘价低于四天前的收盘价时，计算一个购买设定。如果该条件连续满足 9 天，形成一个完整的购买设定。当形成一个完整的九天买入设定时，可能表明趋势即将反转，市场即将出现反弹。此时可以考虑买入。。在一个下跌趋势中，当今天的收盘价高于四天前的收盘价时，计算一个售出设定。如果该条件连续满足 9 天，形成一个完整的售出设定。当形成一个完整的九天卖出设定时，可能表明趋势即将反转，市场即将出现回落。此时可以考虑卖出。",
+              'MA': "MA（Moving Average，移动平均线）用于平滑价格数据以识别趋势。MA 是通过计算给定周期内价格的平均值来计算的。当短周期的 MA 上穿过长周期的 MA 时，这可能是一个买入信号(5_10金叉，10_30金叉)，表示市场趋势可能从下跌转为上升。相反，当短周期的 MA 下穿过长周期的 MA 时，这可能是一个卖出信号（5_10死叉，10_30死叉），表示市场趋势可能从上升转为下跌。有时交易者会使用多条不同周期的 MA。例如，可以使用 5 日、10 日和 30 日的 MA。当MA5 >MA10>MA30，多头排列（5_10_30多头排列），市场可能处于强烈上升趋势。5_10_30空头排列同理。",
+              'EMA': "指数移动平均线（EMA）是一种平滑价格数据的技术，赋予近期数据更高的权重。这使得 EMA 更敏感于价格变动，从而有助于识别趋势的转变.。当短周期的 EMA 上穿过长周期的 EMA 时，这可能是一个买入信号(5_10金叉，10_30金叉)，表示市场趋势可能从下跌转为上升。相反，当短周期的 EMA 下穿过长周期的 MA 时，这可能是一个卖出信号（5_10死叉，10_30死叉），表示市场趋势可能从上升转为下跌。有时交易者会使用多条不同周期的E MA。例如，可以使用 5 日、10 日和 30 日的 EMA。当EMA5 >EMA10>EMA30，多头排列（5_10_30多头排列），市场可能处于强烈上升趋势。5_10_30空头排列同理。",
+              'OBV': "OBV（On Balance Volume，平衡量）用于衡量资金流入和流出。它通过将每日成交量添加到一个累计总和中，根据价格上涨还是下跌来确定资金流的方向。当价格和 OBV 同时上涨时，这可能意味着上涨趋势较强，交易者可以考虑买入。相反，当价格和 OBV 同时下跌时，这可能意味着下跌趋势较强，交易者可以考虑卖出。此处的量价5连升，是值obv和价格最近连续5根K线都在上涨，其他同理。",
+              'CCI': "CCI（Commodity Channel Index，商品频道指数）是一种动量指标，CCI 的值通常在 -100 到 +100 之间。当 CCI 超过 +100 时，表示资产可能被超买，可能会出现回调。当 CCI 低于 -100 时，表示资产可能被超卖，可能会出现上涨。当 CCI 从负值上穿过零轴时，这可能是一个买入信号。相反，当 CCI 从正值下穿过零轴时，这可能是一个卖出信号。",
+              '均线过滤': "行情总是沿着最小阻力的方向发展。均线代表持仓成本,价格在均线以上，往往上涨概率较高",
+              '新高': "行情总是沿着最小阻力的方向发展。新高后阻力小，上涨概率大"
+            };
+            function updateTriggerCondition(signal) {
+                // Based on the signal name, dynamically generate the trigger conditions
+                var triggerConditions = signalTriggerMap[signal];
+                $('#triggerDropdown').empty(); // Clear the previous options
+
+                // Add options to the trigger dropdown
+                triggerConditions.forEach(function(triggerCondition) {
+                    $('#triggerDropdown').append('<option value="' + triggerCondition + '">' + triggerCondition + '</option>');
+                });
+
+                // Trigger an event to update the information and fetch data
+                $('#triggerDropdown').trigger('change');
+            }
+
+            function displayData(data) {
+                var signalDataContainer = $("#signalData");
+                signalDataContainer.empty();
+
+                if(data.length == 0) {
+                    signalDataContainer.append("<div class='dataRow'><span>没有符合条件的交易对</span></div>");
+                } else {
+                    data.forEach(function(item) {
+                        var modifiedPair = item.pair.replace('USDT', '_USDT');
+                        var dataRow = $("<a class='dataRow'></a>")
+                        .attr("href", `https://www.binance.com/zh-CN/trade/${modifiedPair}?theme=dark&type=spot`)
+                        .attr("target", "_blank");
+                        dataRow.append("<span>" + item.pair + "</span>");
+                        dataRow.append("<span>" + item.nowPrice.toString().replace(/\.?0+$/, '') + "</span>");
+                        dataRow.append("<span>" + item.nowPriceChange + "%" + "</span>");
+                        signalDataContainer.append(dataRow);
+                    });
+                }
+            }
+
+            function sendDataToServer() {
+                var exchange = $('#exchangeDropdown').val();
+                var signal = $('#signalDropdown').val();
+                var period = $('#periodDropdown').val();
+                var trigger = $('#triggerDropdown').val();
+
+                const backendUrl = 'https://coinwin.ai/get-ten';
+                $.ajax({
+                    type: 'GET',
+                    url: backendUrl,
+                    data: {
+                        exchange: exchange,
+                        signal: signal,
+                        period: period,
+                        trigger: trigger,
+                        language: "zh"
+                    },
+                    success: function(data) {
+                        if (data) {
+                            displayData(data);
+                        }
+                    },
+                    error: function() {
+                        alert('网络错误 请重试');
+                    }
+                });
+            }
+
+            // Event handlers
+            $('#signalDropdown').change(function() {
+                var selectedSignal = $(this).val();
+                $('#signalInfo').html(signalInfo[selectedSignal]);
+                updateTriggerCondition(selectedSignal);
+            });
+
+            $('#periodDropdown, #triggerDropdown').change(function() {
+                sendDataToServer();
+            });
+
+            // Default selections
+            $('#signalDropdown').trigger('change');
+
+
+
+      });
+    </script>
+
+
+    <script>
+      AOS.init({duration: 800, // values from 0 to 3000, with step 50ms
+      });
+    </script>
+
+
+
+
+
+</body>
+</html>

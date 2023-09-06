@@ -1,0 +1,369 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="description" content="We analyze big data from the crypto market trends in real-time, identifying whale pumps. Free alert.">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"> -->
+  <link rel="icon" type="image/ico" sizes="32x32" href="img/logo.ico">
+  <link rel="icon" type="image/ico" sizes="16x16" href="img/logo.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon.png">
+  <meta name="author" content="Mars Killer">
+  <meta name="generator" content="Eleventy v2.0.0">
+  <meta name="HandheldFriendly" content="true">
+  <title>CoinWin - Automate, Earn, Repeat</title>
+  <link rel="stylesheet" href="css/theme.min.css">
+
+  <style>
+
+      /* inter-300 - latin */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+
+      /* inter-400 - latin */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local(''),
+            url('fonts/inter-v12-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('fonts/inter-v12-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+      .link-fancy {
+          text-decoration: none; /* removes underline */
+      }
+
+      .icon-twitter {
+          width: 32px; /* width of the SVG */
+          height: 32px; /* height of the SVG */
+      }
+      .icon-telegram {
+          width: 38px; /* width of the SVG */
+          height: 38px; /* height of the SVG */
+      }
+      .swal2-close {
+        font-size: 30px !important;
+      }
+      #buttonsContainer{
+          margin-top: 30px;
+      }
+      .text-btn {
+            background-color: Transparent;
+            border: none;
+            color: #f7f3f3;
+            text-align: right;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 19px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .label {
+            font-weight: bold;
+            margin-right: 10px;
+            margin-left: 26px;
+        }
+        .signalDataTitlelabel {
+          font-size: 19px;
+          white-space: nowrap;
+          margin-right: 10px;
+        }
+        .row {
+            margin-bottom: 10px;
+        }
+
+        .dropdownrow select {
+            font-size: 16px;      /* 设置下拉菜单字体大小 */
+            width: 40%;          /* 调整下拉菜单宽度 */
+            padding: 5px 10px;   /* 为下拉菜单添加些许内边距 */
+            background-color: #f7f3f3; /* 设置下拉菜单背景色 */
+            color: #333;         /* 设置下拉菜单文字颜色 */
+            border: 1px solid #ccc; /* 设置下拉菜单边框 */
+            border-radius: 5px;  /* 设置下拉菜单边框圆角 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */     
+            margin-bottom: 13px; 
+            margin-left: 8px;      
+
+        }
+        
+        .selected {
+            color: rgb(255, 208, 0); /* Change as needed */
+        }
+
+        #signalInfo {
+            font-size: 17px; 
+            color: rgb(148, 145, 145); 
+            /* background-color: black; */
+            display: flex; /* 使用flex布局来分布标题 */
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 90%; /* 设置宽度为屏幕宽度的90% */
+            padding: 10px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+            height: auto;
+        }
+
+        #signalDataTitle {
+            display: flex; 
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 90%; /* 设置宽度为屏幕宽度的90% */
+            background-color: rgb(48, 48, 46); /* 设置背景颜色 */
+            padding: 8px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+        }
+
+        /* 以下样式是用于翻页或滑动加载下一页的数据 */
+        #signalData {
+            display: flex; 
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 90%; /* 设置宽度为屏幕宽度的90% */
+            padding: 10px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+            height: auto; /* 你可以根据需要调整高度 */
+            /* overflow-y: scroll; */
+            font-size: 18px;
+        }
+
+        .dataRow {
+            display: flex; 
+            justify-content: space-between; /* 使标题在水平方向上均匀分布 */
+            width: 100%; /* 设置宽度为屏幕宽度的90% */
+            padding: 10px; /* 添加内边距 */
+            margin: 0 auto; /* 自动外边距可以将标题居中 */
+            /* overflow-y: scroll;  */
+            font-size: 18px;
+            height: 59px;
+        }
+</style>
+
+  </head>
+
+  <body class="bg-black text-white mt-0" data-bs-spy="scroll" data-bs-target="#navScroll">
+
+<div id="buttonsContainer">
+    <div class="dropdownrow">
+        <span class="label">Exchange:</span>
+        <select id="exchangeDropdown">
+            <option value="binance" selected>Binance</option>
+            <!-- 更多交易所选项可以在此添加 -->
+        </select>
+        <!-- <span style="font-size: 9px; color: lightslategray;">More exchanges,Coming Soon...</span> -->
+    </div>
+
+    <div class="dropdownrow">
+        <span class="label">Indicator name:</span>
+        <select id="signalDropdown">
+            <!-- 将按钮转换为下拉菜单的选项 -->
+            <option value="MACD">MACD</option>
+            <option value="MA">MA</option>
+            <option value="KDJ">KDJ</option>
+            <option value="EMA">EMA</option>
+            <option value="CCI">CCI</option>
+            <option value="OBV">OBV</option>
+            <option value="RSI">RSI</option>
+            <option value="TD">TD</option>
+            <option value="均线过滤">Moving average filter</option>
+            <option value="新高">All-time high</option>
+
+            <!-- 更多指标名称可以在此添加 -->
+        </select>
+    </div>
+    <div class="dropdownrow">
+        <span class="label">Interval:</span>
+        <select id="periodDropdown">
+            <option value="4h">4h</option>
+            <option value="1d">1d</option>
+            <!-- 更多周期可以在此添加 -->
+        </select>
+    </div>
+
+    <div class="dropdownrow" id="triggerDropdownRow">
+        <span class="label">Trigger:</span>
+        <select id="triggerDropdown">
+            <!-- 触发条件的选项将由JavaScript动态生成 -->
+        </select>
+    </div>
+
+    <div class="row" id="signalInfo">
+    </div>
+
+    <div id="signalDataTitle">
+        <span class="signalDataTitlelabel">Pair</span>
+        <span class="signalDataTitlelabel">Price</span>
+        <span class="signalDataTitlelabel">PriceChange</span>
+    </div>
+    
+    <div class="row" id="signalData">
+       
+    </div> 
+    
+</div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+      $(document).ready(function() {
+        //返回按钮
+        const tg = window.Telegram.WebApp;        
+          tg.MainButton.text = "Back";
+          tg.MainButton.show();
+          tg.BackButton.show();    
+          tg.onEvent("mainButtonClicked", function(){
+              window.location.href = 'https://coinwin.vip/en/home_en.html';
+              tg.MainButton.hide();
+              tg.BackButton.hide();
+          });
+          tg.onEvent("backButtonClicked", function(){
+              tg.BackButton.hide();
+              window.location.href = 'https://coinwin.vip/en/home_en.html';
+          });
+            var signalTriggerMap = {
+                'MACD': ['Bullish crossover of fast and slow lines', 'Bearish crossover of fast and slow lines', 'Buy signal when the fast line crosses above the zero axis from below', 'Sell signal when the fast line crosses below the zero axis from above'],
+                'KDJ': ['Overbought', 'Oversold', 'Bullish crossover of K line and D line', 'Bearish crossover of K line and D line'],
+                'RSI': ['Overbought', 'Oversold', 'Midline bullish crossover of RSI', 'Midline bearish crossover of RSI'],
+                'TD': ['Buy setup', 'Sell setup'],
+                'MA': ['5_10Bullish crossover', '5_10Bearish crossover','10_30Bullish crossover', '10_30Bearish crossover','5_10_30Bullish alignment', '5_10_30Bearish alignment'],
+                'EMA': ['5_10Bullish crossover', '5_10Bearish crossover','10_30Bullish crossover', '10_30Bearish crossover','5_10_30Bullish alignment', '5_10_30Bearish alignment'],
+                'OBV': ['Volume and price 5 consecutive up', 'Volume and price 5 consecutive down','Volume and price 4 consecutive up', 'Volume and price 4 consecutive down'],
+                'CCI': ['Overbought', 'Oversold','Crossing above the zero axis from negative values', 'Crossing below the zero axis from positive values'],
+                'Moving average filter': ['Above the 5-day moving average', 'Above the 30-day moving average','Above the 200-day moving average'],
+                'All-time high': ['5-day new high', '30-day new high','200-day new high','Historical high']
+            };
+            var signalInfo = {
+                'MACD': "The MACD indicator consists of two lines and a histogram. The fast line is called the DIF, and the slow line is called the DEA. When the DIF crosses above the DEA from below, it generates a bullish signal known as a MACD bullish crossover,indicating a buy signal. Conversely, when the DIF crosses below the DEA from above, it generates a bearish signal known as a MACD bearish crossover,indicating a sell signal. Additionally, when the DIF crosses below the zero axis, it generates a buy signal, and when the DIF crosses above the zero axis, it generates a sell signal.",
+                'KDJ': "KDJ, also known as the stochastic oscillator, consists of three lines. The fastest line is the J line, followed by the K line, and the slowest line is the D line. When both the K line and D line are above 80, the market is considered overbought, indicating a potential downturn. When both the K line and D line are below 20, the market is considered oversold, suggesting a possible upward movement. A bullish signal is generated when the K line crosses above the D line (bullish crossover), indicating a buy signal. Conversely, a bearish signal is generated when the K line crosses below the D line (bearish crossover), indicating a sell signal.",
+                'RSI': "The Relative Strength Index (RSI) is a commonly used momentum indicator that measures the speed and magnitude of price changes in an asset. The RSI value ranges from 0 to 100. When the RSI value is above 70, it is considered overbought, indicating a potential downturn. When the RSI value is below 30, it is considered oversold, suggesting a possible upward movement. The midline of the RSI is at 50. When the RSI crosses above 50 from below, it indicates strong buying pressure in the market and suggests a potential continuation of an upward trend. When the RSI crosses below 50 from above, it indicates strong selling pressure in the market and suggests a potential continuation of a downward trend.",
+                'TD': "The Tom DeMark Sequential Indicator is designed to identify potential trend exhaustion and reversal points in asset prices. In an uptrend, a buy setup is calculated when today's closing price is lower than the closing price four days ago. If this condition is met for nine consecutive days, it forms a complete buy setup. The formation of a complete nine-day buy setup suggests a potential trend reversal and an upcoming market rebound. It may be considered a buying opportunity at this point. In a downtrend, a sell setup is calculated when today's closing price is higher than the closing price four days ago. If this condition is met for nine consecutive days, it forms a complete sell setup. The formation of a complete nine-day sell setup suggests a potential trend reversal and an upcoming market decline. It may be considered a selling opportunity at this point.",
+                'MA': "The Moving Average (MA) is used to smooth price data and identify trends. It is calculated by averaging the prices over a given period. When a shorter-term MA crosses above a longer-term MA, it may generate a buy signal (such as a 5_10 golden cross or a 10_30 golden cross), indicating a potential shift from a downtrend to an uptrend in the market. Conversely, when a shorter-term MA crosses below a longer-term MA, it may generate a sell signal (such as a 5_10 death cross or a 10_30 death cross), indicating a potential shift from an uptrend to a downtrend. Traders sometimes use multiple MA lines with different periods. For example, they may use 5-day, 10-day, and 30-day MAs. When MA5 > MA10 > MA30, it is called a bullish alignment (5_10_30 bullish alignment), suggesting a strong upward trend in the market. The same principle applies to bearish alignments in a 5_10_30 bearish alignment.",
+                'EMA': "Exponential Moving Average (EMA) is a smoothing technique used for price data that assigns higher weightage to recent data. This makes EMA more responsive to price changes and helps in identifying trend transitions. When a shorter-term EMA crosses above a longer-term EMA, it may generate a buy signal (such as a 5_10 golden cross or a 10_30 golden cross), indicating a potential shift from a downtrend to an uptrend in the market. Conversely, when a shorter-term EMA crosses below a longer-term EMA, it may generate a sell signal (such as a 5_10 death cross or a 10_30 death cross), indicating a potential shift from an uptrend to a downtrend. Traders sometimes use multiple EMAs with different periods. For example, they may use 5-day, 10-day, and 30-day EMAs. When EMA5 > EMA10 > EMA30, it is called a bullish alignment (5_10_30 bullish alignment), suggesting a strong upward trend in the market. The same principle applies to bearish alignments in a 5_10_30 bearish alignment.",
+                'OBV': "On Balance Volume (OBV) is used to measure the flow of funds in and out of a security. It does this by adding the daily trading volume to a cumulative total based on whether the price closes higher or lower. When both the price and OBV are rising, it may indicate a strong uptrend, and traders may consider buying. Conversely, when both the price and OBV are falling, it may indicate a strong downtrend, and traders may consider selling. In the context of volume and price 5 consecutive up, it means that the OBV and price have been continuously rising for the past five candles on the chart. The same principle applies to other scenarios, such as volume and price 5 consecutive down.",
+                'CCI': "CCI (Commodity Channel Index) is a momentum indicator. The CCI value typically ranges between -100 and +100. When the CCI surpasses +100, it indicates that the asset may be overbought, suggesting a potential pullback. When the CCI falls below -100, it indicates that the asset may be oversold, suggesting a potential uptrend. A buy signal is generated when the CCI crosses above the zero line from negative values. Conversely, a sell signal is generated when the CCI crosses below the zero line from positive values.",
+                'Moving average filter': "The market tends to move in the path of least resistance. Moving averages represent the average cost of holding a position. When the price is above the moving average, there is often a higher probability of an uptrend.",
+                'All-time high': "The market tends to move in the direction of least resistance. After reaching a new high, the resistance is typically lower, resulting in a higher probability of an upward movement."
+            };
+            function updateTriggerCondition(signal) {
+                // Based on the signal name, dynamically generate the trigger conditions
+                var triggerConditions = signalTriggerMap[signal];
+                $('#triggerDropdown').empty(); // Clear the previous options
+
+                // Add options to the trigger dropdown
+                triggerConditions.forEach(function(triggerCondition) {
+                    $('#triggerDropdown').append('<option value="' + triggerCondition + '">' + triggerCondition + '</option>');
+                });
+
+                // Trigger an event to update the information and fetch data
+                $('#triggerDropdown').trigger('change');
+            }
+
+            function displayData(data) {
+                var signalDataContainer = $("#signalData");
+                signalDataContainer.empty();
+
+                if(data.length == 0) {
+                    signalDataContainer.append("<div class='dataRow'><span>There are no trading pairs that meet the criteria/conditions.</span></div>");
+                } else {
+                    data.forEach(function(item) {
+                        var modifiedPair = item.pair.replace('USDT', '_USDT');
+                        var dataRow = $("<a class='dataRow'></a>")
+                        .attr("href", `https://www.binance.com/zh-CN/trade/${modifiedPair}?theme=dark&type=spot`)
+                        .attr("target", "_blank");
+                        dataRow.append("<span>" + item.pair + "</span>");
+                        dataRow.append("<span>" + item.nowPrice.toString().replace(/\.?0+$/, '') + "</span>");
+                        dataRow.append("<span>" + item.nowPriceChange + "%" + "</span>");
+                        signalDataContainer.append(dataRow);
+                    });
+                }
+            }
+
+            function sendDataToServer() {
+                var exchange = $('#exchangeDropdown').val();
+                var signal = $('#signalDropdown').val();
+                var period = $('#periodDropdown').val();
+                var trigger = $('#triggerDropdown').val();
+
+                const backendUrl = 'https://coinwin.ai/get-ten';
+                $.ajax({
+                    type: 'GET',
+                    url: backendUrl,
+                    data: {
+                        exchange: exchange,
+                        signal: signal,
+                        period: period,
+                        trigger: trigger,
+                        language: "en"
+                    },
+                    success: function(data) {
+                        if (data) {
+                            displayData(data);
+                        }
+                    },
+                    error: function() {
+                        alert('net erro,please try again');
+                    }
+                });
+            }
+
+            // Event handlers
+            $('#signalDropdown').change(function() {
+                var selectedSignal = $(this).val();
+                $('#signalInfo').html(signalInfo[selectedSignal]);
+                updateTriggerCondition(selectedSignal);
+            });
+
+            $('#periodDropdown, #triggerDropdown').change(function() {
+                sendDataToServer();
+            });
+
+            // Default selections
+            $('#signalDropdown').trigger('change');
+
+
+      });
+    </script>
+
+
+    <script>
+      AOS.init({duration: 800, // values from 0 to 3000, with step 50ms
+      });
+    </script>
+
+
+
+</body>
+</html>
